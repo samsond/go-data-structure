@@ -11,23 +11,21 @@ func (s *Stack[T]) Push(element T) {
 	s.elements = append(s.elements, element)
 }
 
-func (s *Stack[T]) Pop() (T, error) {
+func (s *Stack[T]) Pop() (*T, error) {
 	if s.IsEmpty() {
-		var zero T
-		return zero, errors.New("stack is empty")
+		return nil, errors.New("stack is empty")
 	}
 	element := s.elements[len(s.elements)-1]
 	s.elements = s.elements[:len(s.elements)-1]
-	return element, nil
+	return &element, nil
 }
 
-func (s *Stack[T]) Peek() (T, error) {
+func (s *Stack[T]) Peek() (*T, error) {
 	if s.IsEmpty() {
-		var zero T
-		return zero, errors.New("stack is empty")
+		return nil, errors.New("stack is empty")
 	}
 	element := s.elements[len(s.elements)-1]
-	return element, nil
+	return &element, nil
 }
 func (s *Stack[T]) IsEmpty() bool {
 	return len(s.elements) == 0

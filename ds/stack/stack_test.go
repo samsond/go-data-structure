@@ -24,7 +24,7 @@ func TestStack_Pop(t *testing.T) {
 		t.Errorf("Pop() should not return an error for a non-empty stack")
 	}
 
-	if element1 != 2 {
+	if *element1 != 2 {
 		t.Errorf("Expected popped element to be 2, got %d", element1)
 	}
 
@@ -75,7 +75,7 @@ func TestStack_Peek(t *testing.T) {
 		t.Errorf("Peek() should not remove from the stack")
 	}
 
-	if element != 1 {
+	if *element != 1 {
 		t.Errorf("Peek() should return the expected element from top of stack")
 	}
 }

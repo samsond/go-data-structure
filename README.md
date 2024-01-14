@@ -53,6 +53,46 @@ func main() {
 ``go tool cover -html=coverage.out
 ``
 
+
+## Trie Implementation in Go
+
+**Trie:** Your Efficient String Assistant
+
+Named for its purpose, the trie (pronounced "try") is a tree-like data structure rooted in efficient string retrieval. Imagine a tree where each branch represents a letter, guiding you towards words like signposts in a forest. 
+
+**Here's how it works:**
+
+* **Words share branches:** Words with common prefixes follow the same path until they diverge. This saves space and speeds up searches.
+
+* **Fast lookups:** Finding a word is like following a path in a tree—there is no need to compare the entire word at each step.
+
+* **Prefix power:** Not only can you find specific words, but you can also find words that start with a specific prefix – perfect for autocomplete and spell-checking!
+
+Here are some key benefits of using tries:
+
+* **Efficient search:** Finding words is fast, especially for prefixes.
+
+* **Memory-friendly:** Saves space by sharing common prefixes.
+
+* **Flexible:** Can handle any alphabet and varying word lengths.
+
+### Directory structure
+
+```
+ds/trie/
+├── GenericTrie.go      # Trie implementation
+└── GenericTrie_test.go # Test file for the trie
+```
+
+### Implementation details
+
+```
+1. Insert: adds a word to the trie
+2. Search: returns the value associated with a word in the trie
+3. Autocomplete generates a list of suggestions based on a given prefix
+```
+
+
 ## Contributions
 
-Contributions to this stack implementation are welcome. Please ensure that any enhancements are accompanied by corresponding tests.
+Contributions to this repo are welcome. Please ensure that any enhancements are accompanied by corresponding tests.

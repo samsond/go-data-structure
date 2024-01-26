@@ -101,7 +101,7 @@ func TestBinaryTree_DepthFirstSearch(t *testing.T) {
 	expected := []int{5, 3, 1, 4, 7, 6, 8}
 
 	if !slices.Equal(result, expected) {
-		t.Errorf("InOrder traversal did not match expected order. Expected: %v, Got: %v", expected, result)
+		t.Errorf("DepthFirstSearch did not match expected order. Expected: %v, Got: %v", expected, result)
 	}
 
 	// Create a BinaryTree for strings with a string comparison function
@@ -118,6 +118,6 @@ func TestBinaryTree_DepthFirstSearch(t *testing.T) {
 	expectedStringSlice := []string{"apple", "banana", "avocado", "tomato"}
 
 	if !slices.Equal(resultStringSlice, expectedStringSlice) {
-		t.Errorf("InOrder traversal did not match expected order. Expected: %v, Got: %v", resultStringSlice, expectedStringSlice)
+		t.Errorf("DepthFirstSearch did not match expected order. Expected: %v, Got: %v", resultStringSlice, expectedStringSlice)
 	}
 }

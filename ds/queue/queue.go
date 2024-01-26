@@ -11,6 +11,10 @@ type Queue[T any] struct {
 	Back  *Node[T]
 }
 
+func NewQueue[T any]() *Queue[T] {
+	return &Queue[T]{}
+}
+
 func (q *Queue[T]) IsEmpty() bool {
 	return q.Front == nil
 }

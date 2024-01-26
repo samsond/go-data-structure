@@ -2,6 +2,7 @@ package tree
 
 import (
 	"github.com/samsond/go-data-structure/ds/queue"
+	"github.com/samsond/go-data-structure/ds/stack"
 )
 
 type Comparator[T any] func(a, b T) int
@@ -86,6 +87,40 @@ func (t *BinaryTree[T]) BreadthFirst() []T {
 
 	return result
 
+}
+
+func (t *BinaryTree[T]) DepthFirstSearch() []T {
+	var result []T
+
+	if t.IsEmpty() {
+		return result
+	}
+
+	stackItem := stack.NewStack[*Node[T]]()
+	stackItem.Push(t.root)
+
+	for !stackItem.IsEmpty() {
+		nodePtr, err := stackItem.Pop()
+
+		if err != nil {
+			break
+		}
+
+		node := *nodePtr
+		result = append(result, node.value)
+
+		// push right node first
+		if node.Right != nil {
+			stackItem.Push(node.Right)
+		}
+
+		// push left node second
+		if node.Left != nil {
+			stackItem.Push(node.Left)
+		}
+	}
+
+	return result
 }
 
 func intComparator(a, b int) int {

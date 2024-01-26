@@ -5,7 +5,7 @@ import "testing"
 func TestStack_Push(t *testing.T) {
 	expectedSize := 1
 
-	stack := Stack[int]{}
+	stack := NewStack[int]()
 
 	stack.Push(1)
 	if len(stack.elements) != expectedSize {
@@ -14,7 +14,7 @@ func TestStack_Push(t *testing.T) {
 }
 
 func TestStack_Pop(t *testing.T) {
-	stack := Stack[int]{}
+	stack := NewStack[int]()
 	stack.Push(1)
 	stack.Push(2)
 
@@ -35,7 +35,7 @@ func TestStack_Pop(t *testing.T) {
 }
 
 func TestStack_Pop_EmptyStack(t *testing.T) {
-	stack := Stack[int]{}
+	stack := NewStack[int]()
 
 	_, err := stack.Pop()
 
@@ -52,7 +52,7 @@ func TestStack_Pop_EmptyStack(t *testing.T) {
 
 func TestStack_IsEmpty(t *testing.T) {
 
-	emptyStack := Stack[int]{}
+	emptyStack := NewStack[int]()
 
 	//Test when the stack is empty
 	if !emptyStack.IsEmpty() {
@@ -68,7 +68,7 @@ func TestStack_IsEmpty(t *testing.T) {
 }
 
 func TestStack_Peek(t *testing.T) {
-	stack := Stack[int]{}
+	stack := NewStack[int]()
 	stack.Push(1)
 	element, _ := stack.Peek()
 	if stack.IsEmpty() {
@@ -81,7 +81,7 @@ func TestStack_Peek(t *testing.T) {
 }
 
 func TestStack_Peek_EmptyStack(t *testing.T) {
-	stack := Stack[int]{}
+	stack := NewStack[int]()
 
 	_, err := stack.Peek()
 
@@ -97,7 +97,7 @@ func TestStack_Peek_EmptyStack(t *testing.T) {
 }
 
 func TestStack_Size(t *testing.T) {
-	stack := Stack[int]{}
+	stack := NewStack[int]()
 
 	size, err := stack.Size()
 

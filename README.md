@@ -52,7 +52,16 @@ func main() {
 
 ``go tool cover -html=coverage.out
 ``
+## NotificationQueue
 
+### Key Features
+
+* **Efficient Notification Management:** The NotificationQueue struct is at the core of our system, enabling the concurrent management and distribution of notifications to our users.
+* **Exclusive Access with Mutex:** To maintain data integrity and prevent race conditions, we utilize a mutex that ensures exclusive access to the queue's operations, making our system robust even under heavy load.
+* **Optimized Waiting with Conditional Variables:** Conditional variables are used to signal waiting consumers when new notifications are available, effectively eliminating the need for busy-waiting and reducing CPU usage.
+* **Graceful Shutdown Support:** Implementing an isClosed flag within the NotificationQueue allows us to signal when no more notifications will be pushed to the queue. This mechanism is crucial for a graceful shutdown process, ensuring that all operations are completed without leaving any consumer indefinitely waiting.
+* **Reliable Notification Delivery:** We've carefully adjusted the Push and Pop methods to leverage conditional variables for efficient signaling and waiting. This ensures that all notifications are processed and delivered reliably.
+* **Deadlock Prevention:** By introducing a Close method, we ensure that all waiting consumers are properly signaled to terminate, thus avoiding potential deadlocks that could arise from indefinite waits.
 
 ## Trie Implementation in Go
 

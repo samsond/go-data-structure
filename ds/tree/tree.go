@@ -123,6 +123,28 @@ func (t *BinaryTree[T]) DepthFirstSearch() []T {
 	return result
 }
 
+func (t *BinaryTree[T]) InorderIterative() []T {
+	var result []T
+
+	var stack []*Node[T]
+	current := t.root
+
+	for current != nil || len(stack) > 0 {
+		for current != nil {
+			stack = append(stack, current)
+			current = current.Left
+		}
+
+		current = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+
+		result = append(result, current.value)
+		current = current.Right
+	}
+
+	return result
+}
+
 func intComparator(a, b int) int {
 	if a < b {
 		return -1

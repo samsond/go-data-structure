@@ -121,3 +121,24 @@ func TestBinaryTree_DepthFirstSearch(t *testing.T) {
 		t.Errorf("DepthFirstSearch did not match expected order. Expected: %v, Got: %v", resultStringSlice, expectedStringSlice)
 	}
 }
+
+func TestBinaryTree_InorderIterative(t *testing.T) {
+	tree := BinaryTree[int]{
+		Compare: intComparator,
+	}
+
+	tree.Insert(5)
+	tree.Insert(3)
+	tree.Insert(7)
+	tree.Insert(1)
+	tree.Insert(4)
+	tree.Insert(6)
+	tree.Insert(8)
+
+	result := tree.InorderIterative()
+	expected := []int{1, 3, 4, 5, 6, 7, 8}
+
+	if !slices.Equal(result, expected) {
+		t.Errorf("InOrder traversal did not match expected order. Expected: %v, Got: %v", expected, result)
+	}
+}
